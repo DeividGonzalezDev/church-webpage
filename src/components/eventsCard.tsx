@@ -1,9 +1,9 @@
 import React from 'react'
 
-const eventsCard = () => {
+const EventsCard = () => {
   return (
     <div>eventsCard</div>
   )
 }
 
-export default eventsCard
+export default EventsCard

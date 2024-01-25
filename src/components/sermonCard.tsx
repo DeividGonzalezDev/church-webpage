@@ -1,9 +1,9 @@
 import React from 'react'
 
-const sermonCard = () => {
+const SermonCard = () => {
   return (
     <div>sermonCard</div>
   )
 }
 
-export default sermonCard
+export default SermonCard

@@ -2,7 +2,9 @@ import React from 'react'
 
 const SermonCard = () => {
   return (
-    <div>sermonCard</div>
+    <div>
+      
+    </div>
   )
 }
 

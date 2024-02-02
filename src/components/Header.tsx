@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { FiFacebook } from "react-icons/fi";
@@ -8,8 +9,16 @@ import { MdOutlineEmail } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const Header = () => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenMenu = () =>{
+    setIsOpen(!isOpen);
+  }
+
   return (
     <section className="fixed top-0 w-full text-xl">
       <div className="hidden md:flex justify-between text-neutral-1  h-[80px] mx-[45px] ">
@@ -19,34 +28,40 @@ const Header = () => {
         </div>
         <div className="flex  justify-between items-center text-2xl gap-7">
           <span className="w-[1px] h-full bg-neutral-6"></span>
-          <FiFacebook className="" />
+          <FiFacebook className="hover:text-red-500 hover:cursor-pointer" />
           <span className="w-[1px] h-full bg-neutral-6"></span>
 
-          <BsTwitterX className="" />
-          <span className="w-[1px] h-full bg-neutral-6"></span>
-          <FaInstagram className="" />
+          <BsTwitterX className="hover:text-red-500 hover:cursor-pointer" />
           <span className="w-[1px] h-full bg-neutral-6"></span>
 
-          <FiYoutube className="" />
+          <FaInstagram className="hover:text-red-500 hover:cursor-pointer" />
           <span className="w-[1px] h-full bg-neutral-6"></span>
 
-          <MdOutlineEmail className="" />
+          <FiYoutube className="hover:text-red-500 hover:cursor-pointer" />
           <span className="w-[1px] h-full bg-neutral-6"></span>
 
-          <IoIosSearch className="" />
+          <MdOutlineEmail className="hover:text-red-500 hover:cursor-pointer" />
+          <span className="w-[1px] h-full bg-neutral-6"></span>
+
+          <IoIosSearch className="hover:text-red-500 hover:cursor-pointer" />
         </div>
       </div>
 
       <div className="flex flex-row justify-between items-center rounded-lg bg-neutral-1 md:mx-[45px] px-[50px] py-[20px] md:gap-[219px]">
         <div>
-          <Image
-            src="/logo.jpg"
-            width={72}
-            height={72}
-            alt="logo"
-            className="h-[40px] w-[40px] min-h-[40px] min-w-[40px] rounded-full"
-          />
+          <Link href={"/"}>
+            <Image
+              src="/logo.jpg"
+              width={72}
+              height={72}
+              alt="logo"
+              className="h-[40px] w-[40px] min-h-[40px] min-w-[40px] rounded-full"
+            />
+          </Link>
+          
         </div>
+
+        <div onClick={handleOpenMenu} className="md:hidden">
         <svg
           width="24"
           height="18"
@@ -59,8 +74,22 @@ const Header = () => {
             fill="#BF0A30"
           />
         </svg>
-
+        </div>
+        
         <nav className="md:flex flex-row justify-between items-center font-bold text-2xl text-neutral-13 w-full hidden">
+          <Link className="hover:text-red-500" href={"/"}>INICIO</Link>
+          <Link className="hover:text-red-500" href={"/"}>SERMONES</Link>
+          <Link className="hover:text-red-500" href={"/blog"}>BLOG</Link>
+          <Link className="hover:text-red-500" href={"/contact-us"}>CONTÁCTANOS</Link>
+          <Link
+            href={"/donate"}
+            className="h-full flex items-center bg-red-500 rounded-md px-[30px] py-[20px] text-neutral-1 font-extrabold hover:bg-red-300"
+          >
+            DONAR
+          </Link>
+        </nav>
+
+      <nav className={`${isOpen ? "bg-neutral-1 flex flex-col items-center absolute right-0 top-[65px] p-5 rounded-md gap-3 font-bold" : "hidden"}`}>
           <Link href={"/"}>INICIO</Link>
           <Link href={"/"}>SERMONES</Link>
           <Link href={"/blog"}>BLOG</Link>
@@ -71,7 +100,8 @@ const Header = () => {
           >
             DONAR
           </Link>
-        </nav>
+      </nav>
+
       </div>
     </section>
   );
